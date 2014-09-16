@@ -47,28 +47,30 @@ public class Player {
 			  	move_h = 1;
 		  }
 		  hand_x = x;
+		  if(this.x < 10)
+			  x = 10;
+		  else if(this.x > HookGame.screen_x-50)
+			  x = HookGame.screen_x-50;
 	  }
-	  public void handupdate(){
-		  
+	  
+	  public void handupdate(){	  
 		  if(hand_y>y) {
 			  checkback=1;
 		  }
 		  if(move_h == 1){
-			  if(hand_y>100){
+			  if(hand_y > 100){
 			  		hand_y -= h_speed;
 			  }
-			  else if(hand_y<110){
+			  else if(hand_y < 110){
 			  		move_h = 0;
-			  		checkback =0;
+			  		checkback = 0;
 			  }
 		  }
 		  if(move_h == 0){
 			  if(hand_y<this.y+30){
-			  		hand_y += h_speed;
-			  	
+			  		hand_y += h_speed;		  	
 			  	}
 		  }
-		
 	  }
 	  
 }
