@@ -9,7 +9,7 @@ public class Player {
 	protected float x;
 	protected float y;
 	protected float speed = 10;
-	protected float h_speed = 10;
+	static public float h_speed = 10;
 	protected Image image_nak;
 	protected Image image_hand;
 	protected float hand_x;

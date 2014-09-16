@@ -11,8 +11,8 @@ public class HookGame extends BasicGame {
 
 	static public int screen_x = 1240;
 	static public int screen_y = 720;
-	private Player nak;
-	private int nEnemy = 100;
+	static public Player nak;
+	static public int nEnemy = 100;
 	private Enemy[] enemy= new Enemy[nEnemy];
 	public HookGame(String title) {
 		super(title);
@@ -54,6 +54,7 @@ public class HookGame extends BasicGame {
 	public void enemyupdate() {
 		for(int i =0; i<nEnemy; i++){
 			enemy[i].update();
+			Enemy.checkCollision(enemy[i]);
 		}
 	}
 	
