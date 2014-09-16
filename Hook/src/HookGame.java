@@ -13,6 +13,7 @@ public class HookGame extends BasicGame {
 	static public int screen_y = 720;
 	static public Player nak;
 	static public int nEnemy = 100;
+	private boolean gameStart = false;
 	private Enemy[] enemy= new Enemy[nEnemy];
 	public HookGame(String title) {
 		super(title);
@@ -45,10 +46,20 @@ public class HookGame extends BasicGame {
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
 		// TODO Auto-generated method stub
+		
 		Input input = container.getInput();
-		nak.update(input);
-		nak.handupdate();
-		enemyupdate();
+		checkStart(input);
+		if(gameStart){
+			nak.update(input);
+			nak.handupdate();
+			enemyupdate();
+		}
+	}
+
+	public void checkStart(Input input) {
+		if (input.isKeyDown(Input.KEY_S) && !gameStart) { 
+			gameStart = true;
+		 }
 	}
 
 	public void enemyupdate() {
