@@ -1,6 +1,5 @@
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 
@@ -11,9 +10,9 @@ public class Enemy {
 	protected float speed = 3;
 	protected Image image_enemy;
 	
-	public Enemy () throws SlickException {
+	public Enemy (float x) throws SlickException {
 		image_enemy = new Image("res/nak.png");
-		setXY(HookGame.screen_x,90);
+		setXY(x,90);
 	  }
 	
 	public void setXY(float x,float y){
