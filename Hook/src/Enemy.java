@@ -9,9 +9,10 @@ public class Enemy {
 	protected float y;
 	static protected float enemy_width;
 	static protected float enemy_heigh;
-	protected float speed = 7;
+	protected float speed = 5;
 	protected Image image_enemy;
 	protected boolean isCollision = false;
+	protected static int score = 5;
 	
 	public Enemy (float x , float y) throws SlickException {
 		setXY(x,y);
@@ -24,6 +25,9 @@ public class Enemy {
 	
 	public void render(Graphics g) {
 		  image_enemy.draw(x,y);
+		  if(isCollision){
+			  g.drawString("+"+score, x, y-40);
+		  }
 	  }
 	
 	public void update() {
@@ -50,7 +54,8 @@ public class Enemy {
 	}
 	 
 	public static void checkCollision(Enemy temp){
-		if( (HookGame.player.hand_x - temp.x <= enemy_width && HookGame.player.hand_x - temp.x >- 0  ) && Math.abs(HookGame.player.hand_y - temp.y)<= enemy_heigh/2 ){
+		if( (HookGame.player.hand_x - temp.x <= enemy_width && HookGame.player.hand_x - temp.x >- 0  ) && Math.abs(HookGame.player.hand_y - temp.y)<= enemy_heigh/2 && (temp.isCollision == false) ){
+			HookGame.score += score;
 			temp.isCollision = true;
 		}
 		

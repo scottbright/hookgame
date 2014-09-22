@@ -15,17 +15,20 @@ public class HookGame extends BasicGame {
 	static public int nEnemy = 20;
 	private boolean gameStart = false;
 	private Enemy[] enemy= new Enemy[nEnemy];
+	static public float time = 60;
+	static public float smalltime = 0;
+	static public int score = 0;
+	
 	public HookGame(String title) {
 		super(title);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
-		// TODO Auto-generated method stub
 		player.render(g);
 		enemyrender(g);
-		g.drawString("test", 1100, 0);
+		g.drawString("Score: " + score, screen_x-140, 10);
+		g.drawString("Time: " + time, screen_x/2, 10);
 	}
 
 	public void enemyrender(Graphics g) {
@@ -36,7 +39,6 @@ public class HookGame extends BasicGame {
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		// TODO Auto-generated method stub
 		player = new Player(screen_x/2,600);
 		for(int i = 0; i<nEnemy; i++){
 			enemy[i] = new minion2(HookGame.screen_x+i*1000,90);
@@ -45,7 +47,6 @@ public class HookGame extends BasicGame {
 
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
-		// TODO Auto-generated method stub
 		
 		Input input = container.getInput();
 		checkStart(input);
@@ -53,6 +54,11 @@ public class HookGame extends BasicGame {
 			player.update(input);
 			player.handupdate();
 			enemyupdate();
+			smalltime++;
+			if(smalltime == 61){
+				smalltime = 0;
+				time--;
+			}
 		}
 	}
 
