@@ -56,7 +56,7 @@ public class Enemy {
 	}
 	 
 	public static void checkCollision(Enemy temp){
-		if( (HookGame.player.hand_x - temp.x <= enemy_width && HookGame.player.hand_x - temp.x >- 0  ) && Math.abs(HookGame.player.hand_y - temp.y)<= enemy_heigh/2 && (temp.isCollision == false) ){
+		if( (HookGame.player.hand_x - temp.x <= enemy_width && HookGame.player.hand_x - temp.x >- 0  ) && Math.abs(HookGame.player.hand_y - temp.y)<= enemy_heigh/2 /*&& (temp.isCollision == false)*/ ){
 			HookGame.score += score;
 			temp.isCollision = true;
 		}
