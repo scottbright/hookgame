@@ -54,7 +54,20 @@ public class Player {
 	  }
 	  
 	  public void handupdate(){	  
-		  if(hand_y>y) {
+		  handUp();
+		  handDown();
+	  }
+
+	public void handDown() {
+		if(move_h == 0){
+			  if(hand_y<this.y+30){
+			  		hand_y += h_speed;		  	
+			  	}
+		  }
+	}
+
+	public void handUp() {
+		if(hand_y>y) {
 			  checkback=1;
 		  }
 		  if(move_h == 1){
@@ -66,11 +79,6 @@ public class Player {
 			  		checkback = 0;
 			  }
 		  }
-		  if(move_h == 0){
-			  if(hand_y<this.y+30){
-			  		hand_y += h_speed;		  	
-			  	}
-		  }
-	  }
+	}
 	  
 }

@@ -7,13 +7,14 @@ public class Enemy {
 
 	protected float x;
 	protected float y;
-	protected float speed = 4;
+	static protected float enemy_width;
+	static protected float enemy_heigh;
+	protected float speed = 7;
 	protected Image image_enemy;
 	protected boolean isCollision = false;
 	
-	public Enemy (float x) throws SlickException {
-		image_enemy = new Image("res/nak.png");
-		setXY(x,90);
+	public Enemy (float x , float y) throws SlickException {
+		setXY(x,y);
 	  }
 	
 	public void setXY(float x,float y){
@@ -33,8 +34,7 @@ public class Enemy {
 			}
 		}
 		else if(isCollision == true){
-			x = HookGame.nak.hand_x - 10;
-			y = HookGame.nak.hand_y;
+			moveWithHand();
 			if(y>600){
 				x = (HookGame.nEnemy-2)*1400;
 				y = 90;
@@ -43,9 +43,14 @@ public class Enemy {
 		}
 		 
 	  }
+
+	public void moveWithHand() {
+		x = HookGame.player.hand_x - 10;
+		y = HookGame.player.hand_y;
+	}
 	 
 	public static void checkCollision(Enemy temp){
-		if( (HookGame.nak.hand_x - temp.x <= 40 && HookGame.nak.hand_x - temp.x >- 0  ) && Math.abs(HookGame.nak.hand_y - temp.y)<= 30 ){
+		if( (HookGame.player.hand_x - temp.x <= enemy_width && HookGame.player.hand_x - temp.x >- 0  ) && Math.abs(HookGame.player.hand_y - temp.y)<= enemy_heigh/2 ){
 			temp.isCollision = true;
 		}
 		

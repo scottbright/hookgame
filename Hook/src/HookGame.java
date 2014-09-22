@@ -11,8 +11,8 @@ public class HookGame extends BasicGame {
 
 	static public int screen_x = 1240;
 	static public int screen_y = 720;
-	static public Player nak;
-	static public int nEnemy = 100;
+	static public Player player;
+	static public int nEnemy = 20;
 	private boolean gameStart = false;
 	private Enemy[] enemy= new Enemy[nEnemy];
 	public HookGame(String title) {
@@ -23,9 +23,9 @@ public class HookGame extends BasicGame {
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
-		nak.render(g);
+		player.render(g);
 		enemyrender(g);
-		
+		g.drawString("test", 1100, 0);
 	}
 
 	public void enemyrender(Graphics g) {
@@ -37,9 +37,9 @@ public class HookGame extends BasicGame {
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		// TODO Auto-generated method stub
-		nak = new Player(screen_x/2,600);
+		player = new Player(screen_x/2,600);
 		for(int i = 0; i<nEnemy; i++){
-			enemy[i] = new Enemy(HookGame.screen_x+i*1000);
+			enemy[i] = new minion2(HookGame.screen_x+i*1000,90);
 		}
 	}
 
@@ -50,8 +50,8 @@ public class HookGame extends BasicGame {
 		Input input = container.getInput();
 		checkStart(input);
 		if(gameStart){
-			nak.update(input);
-			nak.handupdate();
+			player.update(input);
+			player.handupdate();
 			enemyupdate();
 		}
 	}
@@ -77,6 +77,7 @@ public class HookGame extends BasicGame {
 	      AppGameContainer appgc = new AppGameContainer(game);
 	      appgc.setDisplayMode(screen_x,screen_y, false);
 	      appgc.setTargetFrameRate(60);
+	      //appgc.setMinimumLogicUpdateInterval(1);
 	      appgc.start();
 	    } catch (SlickException e) {
 	      e.printStackTrace();
