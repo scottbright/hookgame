@@ -65,7 +65,7 @@ public class HookGame extends BasicGame {
 	public void update(GameContainer container, int delta) throws SlickException {
 		
 		Input input = container.getInput();
-		checkStart(input);
+		newGame(input);
 		if(gameStart){
 			player.update(input);
 			player.handupdate();
@@ -86,9 +86,11 @@ public class HookGame extends BasicGame {
 		}
 	}
 
-	public void checkStart(Input input) {
+	public void newGame(Input input) {
 		if (input.isKeyDown(Input.KEY_S) && !gameStart) { 
 			gameStart = true;
+			time = 0;
+			score = 0;
 		 }
 	}
 

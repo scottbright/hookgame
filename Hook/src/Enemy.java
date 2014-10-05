@@ -53,17 +53,17 @@ public class Enemy {
 	  }
 
 	public void moveWithHand() {
-		position_x = HookGame.player.hand_x - 10;
-		position_y = HookGame.player.hand_y;
+		position_x = HookGame.player.hand_position_x - 10;
+		position_y = HookGame.player.hand_position_y;
 	}
 	 
-	public static void checkCollision(Enemy temp){
+	public static void checkCollision(Enemy enemy){
 		
-		if(HookGame.player.hand_x - temp.position_x <= enemy_width){
-			if(HookGame.player.hand_x - temp.position_x >- 0 ){
-				if(Math.abs(HookGame.player.hand_y - temp.position_y)<= enemy_heigh/2  )
+		if(HookGame.player.hand_position_x - enemy.position_x <= enemy_width){
+			if(HookGame.player.hand_position_x - enemy.position_x >- 0 ){
+				if(Math.abs(HookGame.player.hand_position_y - enemy.position_y)<= enemy_heigh/2  )
 					/*&& (temp.isCollision == false)*/
-				temp.isCollision = true;
+				enemy.isCollision = true;
 			}
 		}
 		
