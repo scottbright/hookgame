@@ -4,6 +4,7 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
@@ -22,6 +23,10 @@ public class HookGame extends BasicGame {
 	private int militime = 0;
 	private int TimeLimit = 60;
 	
+	protected Image floor;
+	protected Image background;
+	protected Image sky;
+	
 	public HookGame(String title) {
 		super(title);
 	}
@@ -32,6 +37,10 @@ public class HookGame extends BasicGame {
 		enemyrender(g);
 		g.drawString("Score: " + score, screen_x-140, 10);
 		g.drawString("Time: " + (TimeLimit-time), screen_x/2, 10);
+		//background.draw(0,600);
+		//floor.draw(0,600);
+		//sky.draw(0,0);
+		
 	}
 
 	public void enemyrender(Graphics g) {
@@ -44,6 +53,9 @@ public class HookGame extends BasicGame {
 	public void init(GameContainer container) throws SlickException {
 		player = new Player(screen_x/2,600);	
 		initEnemy();	
+//		floor = new Image("res/floor.png");
+//		background = new Image("res/background.png");
+//		sky = new Image("res/sky.png");
 	}
 
 	public void initEnemy() throws SlickException {
