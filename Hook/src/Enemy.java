@@ -14,6 +14,7 @@ public class Enemy {
 	protected Image image_enemy;
 	protected boolean isCollision = false;
 	protected static int score;
+	int nEnemy = 12;
 	
 	public Enemy (float x , float y) throws SlickException {
 		setXY(x,y);
@@ -36,13 +37,14 @@ public class Enemy {
 		if(isCollision == false){
 			x-=speed;
 			if(x<=-100){
-				x = (HookGame.nEnemy)*400;
+				x = (nEnemy)*400;
 			}
 		}
 		else if(isCollision == true){
 			moveWithHand();
+			HookGame.score += score;
 			if(y>600){
-				x = (HookGame.nEnemy)*400;
+				x = (nEnemy)*400;
 				y = normal_y;
 				isCollision = false;
 			}
@@ -56,9 +58,13 @@ public class Enemy {
 	}
 	 
 	public static void checkCollision(Enemy temp){
-		if( (HookGame.player.hand_x - temp.x <= enemy_width && HookGame.player.hand_x - temp.x >- 0  ) && Math.abs(HookGame.player.hand_y - temp.y)<= enemy_heigh/2 /*&& (temp.isCollision == false)*/ ){
-			HookGame.score += score;
-			temp.isCollision = true;
+		
+		if(HookGame.player.hand_x - temp.x <= enemy_width){
+			if(HookGame.player.hand_x - temp.x >- 0 ){
+				if(Math.abs(HookGame.player.hand_y - temp.y)<= enemy_heigh/2  )
+					/*&& (temp.isCollision == false)*/
+				temp.isCollision = true;
+			}
 		}
 		
 	}
