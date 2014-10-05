@@ -9,28 +9,27 @@ import org.newdawn.slick.SlickException;
 
 public class HookGame extends BasicGame {
 
+	int nEnemy = 12;
 	static public int screen_x = 840;
 	static public int screen_y = 720;
 	static public Player player;
-	int nEnemy = 12;
+	static public int score = 0;
 	private boolean gameStart = false;
 	private Enemy[] EnemyList= new Enemy[nEnemy];
-	static public int time = 0;
-	static public int smalltime = 0;
-	static public int gameTime = 60;
-	static public int score = 0;
+	private int time = 0;
+	private int militime = 0;
+	private int TimeLimit = 6;
 	
 	public HookGame(String title) {
 		super(title);
 	}
-	
 	
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
 		player.render(g);
 		enemyrender(g);
 		g.drawString("Score: " + score, screen_x-140, 10);
-		g.drawString("Time: " + (gameTime-time), screen_x/2, 10);
+		g.drawString("Time: " + (TimeLimit-time), screen_x/2, 10);
 	}
 
 	public void enemyrender(Graphics g) {
@@ -67,15 +66,23 @@ public class HookGame extends BasicGame {
 		
 		Input input = container.getInput();
 		checkStart(input);
-		if(gameStart&&time<gameTime){
+		if(gameStart){
 			player.update(input);
 			player.handupdate();
 			enemyupdate();
-			smalltime++;
-			if(smalltime == 60){
-				smalltime = 0;
-				time++;
-			}
+			time();
+		}
+	}
+
+
+	public void time() {
+		militime++;
+		if(militime == 60){
+			militime = 0;
+			time++;
+		}
+		if(time>=TimeLimit){
+			gameStart=false;
 		}
 	}
 
@@ -91,8 +98,6 @@ public class HookGame extends BasicGame {
 			Enemy.checkCollision(EnemyList[i]);
 		}
 	}
-	
-	
 	
 	public static void main(String[] args) {
 	    try {

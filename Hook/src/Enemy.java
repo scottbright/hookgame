@@ -5,9 +5,9 @@ import org.newdawn.slick.SlickException;
 
 public class Enemy {
 
-	protected float x;
-	protected float y;
-	protected float normal_y;
+	protected float position_x;
+	protected float position_y;
+	protected float init_p_y;
 	static protected float enemy_width;
 	static protected float enemy_heigh;
 	protected float speed;
@@ -21,31 +21,31 @@ public class Enemy {
 	  }
 	
 	public void setXY(float x,float y){
-		this.x = x;
-	    this.y = y;
-	    this.normal_y = y;
+		this.position_x = x;
+	    this.position_y = y;
+	    this.init_p_y = y;
 	}
 	
 	public void render(Graphics g) {
-		  image_enemy.draw(x,y);
+		  image_enemy.draw(position_x,position_y);
 		  if(isCollision){
-			  g.drawString("+"+score, x, y-40);
+			  g.drawString("+"+score, position_x, position_y-40);
 		  }
 	  }
 	
 	public void update() {
 		if(isCollision == false){
-			x-=speed;
-			if(x<=-100){
-				x = (nEnemy)*400;
+			position_x-=speed;
+			if(position_x<=-100){
+				position_x = (nEnemy)*400;
 			}
 		}
 		else if(isCollision == true){
 			moveWithHand();
 			HookGame.score += score;
-			if(y>600){
-				x = (nEnemy)*400;
-				y = normal_y;
+			if(position_y>600){
+				position_x = (nEnemy)*400;
+				position_y = init_p_y;
 				isCollision = false;
 			}
 		}
@@ -53,15 +53,15 @@ public class Enemy {
 	  }
 
 	public void moveWithHand() {
-		x = HookGame.player.hand_x - 10;
-		y = HookGame.player.hand_y;
+		position_x = HookGame.player.hand_x - 10;
+		position_y = HookGame.player.hand_y;
 	}
 	 
 	public static void checkCollision(Enemy temp){
 		
-		if(HookGame.player.hand_x - temp.x <= enemy_width){
-			if(HookGame.player.hand_x - temp.x >- 0 ){
-				if(Math.abs(HookGame.player.hand_y - temp.y)<= enemy_heigh/2  )
+		if(HookGame.player.hand_x - temp.position_x <= enemy_width){
+			if(HookGame.player.hand_x - temp.position_x >- 0 ){
+				if(Math.abs(HookGame.player.hand_y - temp.position_y)<= enemy_heigh/2  )
 					/*&& (temp.isCollision == false)*/
 				temp.isCollision = true;
 			}
