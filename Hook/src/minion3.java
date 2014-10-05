@@ -9,8 +9,8 @@ public class minion3 extends Enemy {
 		image_enemy = new Image("res/minion3.png");
 		enemy_width = 50;
 		enemy_heigh = 80;
-		speed = 6;
-		score = 4;
+		speed = 9;
+		score = 14;
 	}
 
 }

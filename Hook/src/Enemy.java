@@ -1,3 +1,5 @@
+import java.util.Random;
+
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -7,7 +9,6 @@ public class Enemy {
 
 	protected float position_x;
 	protected float position_y;
-	protected float init_p_y;
 	static protected float enemy_width;
 	static protected float enemy_heigh;
 	protected float speed;
@@ -23,7 +24,6 @@ public class Enemy {
 	public void setXY(float x,float y){
 		this.position_x = x;
 	    this.position_y = y;
-	    this.init_p_y = y;
 	}
 	
 	public void render(Graphics g) {
@@ -34,18 +34,20 @@ public class Enemy {
 	  }
 	
 	public void update() {
+		Random rand = new Random();
 		if(isCollision == false){
 			position_x-=speed;
 			if(position_x<=-100){
-				position_x = (nEnemy)*400;
+				position_x = HookGame.screen_x + rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100;
 			}
 		}
 		else if(isCollision == true){
 			moveWithHand();
-			HookGame.score += score;
+			
 			if(position_y>600){
-				position_x = (nEnemy)*400;
-				position_y = init_p_y;
+				HookGame.score += score;
+				position_x = HookGame.screen_x + rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100;
+				position_y = rand.nextInt((300 - 90) + 1) + 90;
 				isCollision = false;
 			}
 		}

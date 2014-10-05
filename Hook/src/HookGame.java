@@ -1,3 +1,5 @@
+import java.util.Random;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
@@ -18,7 +20,7 @@ public class HookGame extends BasicGame {
 	private Enemy[] EnemyList= new Enemy[nEnemy];
 	private int time = 0;
 	private int militime = 0;
-	private int TimeLimit = 6;
+	private int TimeLimit = 60;
 	
 	public HookGame(String title) {
 		super(title);
@@ -45,19 +47,20 @@ public class HookGame extends BasicGame {
 	}
 
 	public void initEnemy() throws SlickException {
+		Random rand = new Random();
 		for(int i = 0; i<nEnemy; i++){
 			if(i == 0 || i == 4)
-				EnemyList[i] = new leader(HookGame.screen_x+i*400,90);
+				EnemyList[i] = new leader(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
 			else if(i==1 || i==9)
-				EnemyList[i] = new minion1(HookGame.screen_x+i*400,100);
+				EnemyList[i] = new minion1(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
 			else if(i==2 || i==12)
-				EnemyList[i] = new minion2(HookGame.screen_x+i*400,120);
+				EnemyList[i] = new minion2(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
 			else if(i==3 || i==6)
-				EnemyList[i] = new minion3(HookGame.screen_x+i*400,130);
+				EnemyList[i] = new minion3(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
 			else if(i==5 || i==11)
-				EnemyList[i] = new bonus(HookGame.screen_x+i*400,140);
+				EnemyList[i] = new bonus(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
 			else
-				EnemyList[i] = new Mark(HookGame.screen_x+i*400,150);
+				EnemyList[i] = new Mark(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
 		}
 	}
 

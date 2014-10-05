@@ -10,7 +10,7 @@ public class Mark extends Enemy {
 		enemy_width = 40;
 		enemy_heigh = 80;
 		speed = 8;
-		score = 9;
+		score = 19;
 	}
 
 }

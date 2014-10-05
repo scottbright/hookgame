@@ -9,8 +9,8 @@ public class leader extends Enemy {
 		image_enemy = new Image("res/leader.png");
 		enemy_width = 70;
 		enemy_heigh = 80;
-		speed = 4;
-		score = 5;
+		speed = 5;
+		score = 15;
 	}
 
 }

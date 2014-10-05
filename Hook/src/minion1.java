@@ -10,7 +10,7 @@ public class minion1 extends Enemy {
 		enemy_width = 70;
 		enemy_heigh = 80;
 		speed = 6;
-		score = 4;
+		score = 14;
 	}
 
 }
