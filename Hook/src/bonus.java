@@ -1,7 +1,6 @@
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-
 public class bonus extends Enemy {
 
 	public bonus(float x, float y) throws SlickException {
