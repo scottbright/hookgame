@@ -10,7 +10,6 @@ public class leader extends Enemy {
 		enemy_width = 70;
 		enemy_heigh = 80;
 		speed = 5;
-		score = 15;
 	}
 
 }

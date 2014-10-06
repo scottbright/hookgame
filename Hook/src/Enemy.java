@@ -14,7 +14,7 @@ public class Enemy {
 	protected float speed;
 	protected Image image_enemy;
 	protected boolean isCollision = false;
-	protected static int score;
+	protected static int score = 19;
 	int nEnemy = 12;
 	
 	public Enemy (float x , float y) throws SlickException {
@@ -29,7 +29,7 @@ public class Enemy {
 	public void render(Graphics g) {
 		  image_enemy.draw(position_x,position_y);
 		  if(isCollision){
-			  g.drawString("+"+score, position_x, position_y-40);
+			  g.drawString("+" + score, position_x, position_y-40);
 		  }
 	  }
 	
@@ -45,7 +45,7 @@ public class Enemy {
 			moveWithHand();
 			
 			if(position_y>600){
-				HookGame.score += score;
+				HookGame.score += score++;
 				position_x = HookGame.screen_x + rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100;
 				position_y = rand.nextInt((300 - 90) + 1) + 90;
 				isCollision = false;

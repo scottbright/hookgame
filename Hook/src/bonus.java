@@ -10,7 +10,6 @@ public class bonus extends Enemy {
 		enemy_width = 60;
 		enemy_heigh = 80;
 		speed = 13;
-		score = 23;
 	}
 
 }
