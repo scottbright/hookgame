@@ -1,3 +1,4 @@
+package scottbright;
 import java.util.Random;
 
 import org.newdawn.slick.AppGameContainer;

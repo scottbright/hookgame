@@ -1,3 +1,4 @@
+package scottbright;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
