@@ -53,8 +53,8 @@ public class HookGame extends BasicGame {
 	public void init(GameContainer container) throws SlickException {
 		player = new Player(screen_x/2,600);	
 		initEnemy();	
-		ground = new Image("res/ground.png");
-		background = new Image("res/background.png");
+		ground = new Image("res/ground2.png");
+		background = new Image("res/background3.png");
 	}
 
 	public void initEnemy() throws SlickException {
@@ -101,7 +101,7 @@ public class HookGame extends BasicGame {
 	}
 
 	public void newGame(Input input) {
-		if (input.isKeyDown(Input.KEY_S) && !gameStart) { 
+		if (input.isKeyDown(Input.KEY_SPACE) && !gameStart) { 
 			gameStart = true;
 			time = 0;
 			score = 0;
