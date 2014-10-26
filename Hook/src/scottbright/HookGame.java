@@ -24,9 +24,8 @@ public class HookGame extends BasicGame {
 	private int militime = 0;
 	private int TimeLimit = 60;
 	
-	protected Image floor;
 	protected Image background;
-	protected Image sky;
+	protected Image ground;
 	
 	public HookGame(String title) {
 		super(title);
@@ -34,13 +33,13 @@ public class HookGame extends BasicGame {
 	
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
+		background.draw(0,0);
 		player.render(g);
+		ground.draw(0,672);
 		enemyrender(g);
 		g.drawString("Score: " + score, screen_x-140, 10);
 		g.drawString("Time: " + (TimeLimit-time), screen_x/2, 10);
-		//background.draw(0,600);
-		//floor.draw(0,600);
-		//sky.draw(0,0);
+		
 		
 	}
 
@@ -54,26 +53,25 @@ public class HookGame extends BasicGame {
 	public void init(GameContainer container) throws SlickException {
 		player = new Player(screen_x/2,600);	
 		initEnemy();	
-//		floor = new Image("res/floor.png");
-//		background = new Image("res/background.png");
-//		sky = new Image("res/sky.png");
+		ground = new Image("res/ground.png");
+		background = new Image("res/background.png");
 	}
 
 	public void initEnemy() throws SlickException {
 		Random rand = new Random();
 		for(int i = 0; i<nEnemy; i++){
 			if(i == 0 || i == 6)
-				EnemyList[i] = new minion1(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
+				EnemyList[i] = new Minion1(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
 			else if(i==1 || i==7)
-				EnemyList[i] = new minion2(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
+				EnemyList[i] = new Minion2(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
 			else if(i==2 || i==8)
-				EnemyList[i] = new minion3(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
+				EnemyList[i] = new Minion3(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
 			else if(i==3 || i==9)
-				EnemyList[i] = new minion4(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
+				EnemyList[i] = new Minion4(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
 			else if(i==4 || i==10)
-				EnemyList[i] = new minion5(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
+				EnemyList[i] = new Minion5(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
 			else
-				EnemyList[i] = new bonus(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
+				EnemyList[i] = new Bonus(HookGame.screen_x+rand.nextInt((HookGame.screen_x*2 - 100) + 1) + 100,rand.nextInt((300 - 90) + 1) + 90);
 		}
 	}
 

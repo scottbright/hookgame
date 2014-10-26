@@ -2,9 +2,9 @@ package scottbright;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public class bonus extends Enemy {
+public class Bonus extends Enemy {
 
-	public bonus(float x, float y) throws SlickException {
+	public Bonus(float x, float y) throws SlickException {
 		super(x, y);
 		image_enemy = new Image("res/bonus.png");
 		enemy_width = 60;
